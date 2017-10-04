@@ -3,41 +3,37 @@
 # Student ID: 2303539 & 2298930
 # Email: sowong@chapman.edu & parlett@chapman.edu
 # Course: CS510 Fall 2017
-# Assignment: CW-05
+# Assignment: CW-06
 ###
 
+import numpy as np
+import pandas as pd
 import abscplane
 from abc import ABC, abstractmethod
 
 class ListComplexPlane(abscplane.AbsComplexPlane):
     """complex planes"""
-#     xmin = 0
-#     xmax  = 0
-#     xlen  = 0
-#     ymin  = 0
-#     ymax  = 0
-#     ylen  = 0
-#     plane = []
-#     fs = []
     
     def gen_plane(self,xmin,xmax,xlen,ymin,ymax,ylen):
         '''make it plane'''
         self.plane =  []
         self.dx = (self.xmax-self.xmin)/(self.xlen-1)
-        xs = [self.xmin]
-        s = self.xmin
-        for i in range(0,self.xlen-1):
-            s += self.dx #increment based on length of dx
-            s = round(s,3)
-            xs.append(s)
+        multi = np.array(range(0,self.xlen+1)*ylen)  #array with index + 1, ylen times
+        multi = multi * self.dx #multiply by dx to get how much to add
+        multi = self.xmin + multi
+#         for i in range(0,self.xlen-1):
+#             s += self.dx #increment based on length of dx
+#             s = round(s,3)
+#             xs.append(s)
         self.dy = (self.ymax-self.ymin)/(self.ylen-1)
-        yx = []
-        ys = [self.ymin*1j]
-        s = self.ymin
-        for i in range(0,self.ylen-1):
-            s += self.dy #increment based on length of dy
-            s = round(s,3)
-            ys.append(s*1j)
+        vec_y = np.array(range(0,self.ylen))
+        vec_y = np.repeat(vec_y)
+        vec_y =  (self.ymin*1j) + (vec_y*dy)
+#         s = self.ymin
+#         for i in range(0,self.ylen-1):
+#             s += self.dy #increment based on length of dy
+#             s = round(s,3)
+#             ys.append(s*1j)
         
         for i in range(0,self.xlen):
             p = []
