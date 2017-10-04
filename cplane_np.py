@@ -11,7 +11,7 @@ import pandas as pd
 import abscplane
 from abc import ABC, abstractmethod
 
-class ListComplexPlane(abscplane.AbsComplexPlane):
+class ArrayComplexPlane(abscplane.AbsComplexPlane):
     """complex planes"""
     
     def gen_plane(self,xmin,xmax,xlen,ymin,ymax,ylen):
