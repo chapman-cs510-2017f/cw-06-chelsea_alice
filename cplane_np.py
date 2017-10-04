@@ -17,6 +17,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
     def gen_plane(self,xmin,xmax,xlen,ymin,ymax,ylen):
         '''make it plane'''
         self.plane =  []
+        #xs-----------------------------------------------------------------------------
         self.dx = (self.xmax-self.xmin)/(self.xlen-1)
         multi = np.array(range(0,self.xlen+1)*ylen)  #array with index + 1, ylen times
         multi = multi * self.dx #multiply by dx to get how much to add
@@ -25,6 +26,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
 #             s += self.dx #increment based on length of dx
 #             s = round(s,3)
 #             xs.append(s)
+        #ys-----------------------------------------------------------------------------
         self.dy = (self.ymax-self.ymin)/(self.ylen-1)
         vec_y = np.array(range(0,self.ylen))
         vec_y = np.repeat(vec_y)
@@ -40,6 +42,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
 #             for k in range(0,self.ylen):
 #                 p.append(xs[i]+ys[k])
 #             self.plane.append(p)
+        #together------------------------------------------------------------------------
         self.plane = multi + vec_y
         print(self.plane)
         return self.plane
@@ -94,9 +97,10 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         
     def changeplane(self,f):
         '''apply function to plane'''
-        for i in range(0,len(self.plane)):
-            for k in range(0,len(self.plane[i])):
-                self.plane[i][k] = f(self.plane[i][k])
+        self.plane = f(self.plane)
+#         for i in range(0,len(self.plane)):
+#             for k in range(0,len(self.plane[i])):
+#                 self.plane[i][k] = f(self.plane[i][k])
         print("apply fx")
         print(self.plane)
         
