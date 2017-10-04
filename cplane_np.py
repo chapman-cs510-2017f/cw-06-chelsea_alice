@@ -32,7 +32,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         vec_y = np.array(list(range(0,self.ylen)))
         vec_y = np.repeat(vec_y,xlen)
 #         print(vec_y)
-        vec_y =  (self.ymin*1j) *  (vec_y*self.dy)
+        vec_y =  (self.ymin + vec_y*self.dy)*1j
 #         print(vec_y)
 #         s = self.ymin
 #         for i in range(0,self.ylen-1):
