@@ -11,15 +11,15 @@ import pandas as pd
 import abscplane
 from abc import ABC, abstractmethod
 
-class ListComplexPlane(abscplane.AbsComplexPlane):
+class ArrayComplexPlane(abscplane.AbsComplexPlane):
     """complex planes"""
     
-    def gen_plane(self,xmin,xmax,xlen,ymin,ymax,ylen):
+    def gen_plane(self):
         '''make it plane'''
         self.plane =  []
         #xs-----------------------------------------------------------------------------
         self.dx = (self.xmax-self.xmin)/(self.xlen-1)
-        multi = np.array(list(range(0,self.xlen))*ylen)  #array with index + 1, ylen times
+        multi = np.array(list(range(0,self.xlen))*self.ylen)  #array with index + 1, ylen times
 #         print(multi*2)
         multi = multi * self.dx #multiply by dx to get how much to add
         multi = self.xmin + multi
@@ -30,7 +30,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         #ys-----------------------------------------------------------------------------
         self.dy = (self.ymax-self.ymin)/(self.ylen-1)
         vec_y = np.array(list(range(0,self.ylen)))
-        vec_y = np.repeat(vec_y,xlen)
+        vec_y = np.repeat(vec_y,self.xlen)
 #         print(vec_y)
         vec_y =  (self.ymin + vec_y*self.dy)*1j
 #         print(vec_y)
@@ -47,8 +47,8 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
 #             self.plane.append(p)
         #together------------------------------------------------------------------------
         self.plane = multi + vec_y
-        print(self.plane.reshape(3,3).transpose())
-        return self.plane.reshape(3,3).transpose()
+        print(self.plane.reshape(self.xlen,self.ylen).transpose())
+        return self.plane.reshape(self.xlen,self.ylen).transpose()
         
     def __init__(self,xmin,xmax,xlen,ymin,ymax,ylen):
         self.xmin  = float(xmin)
@@ -60,7 +60,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         self.plane =  []
         self.fs = []
         print("init fx")
-        self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
+        self.plane = self.gen_plane()
         
 #         # The implementation type of plane is up to the user
 #         # fs should be a list of functions, initialized to be empty
@@ -110,7 +110,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
     def refresh(self):
         '''refresh plane with original numbers'''
         print("refresh fx")
-        self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
+        self.plane = self.gen_plane()
         
         
     def zoom(self,newxmin,newxmax,newxlen,newymin,newymax,newylen):
@@ -123,7 +123,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         self.ymax=newxmax
         self.ylen=newxlen
         
-        self.plane = self.gen_plane(self.xmin, self.xmax, self.xlen,self.ymin, self.ymax, self.ylen)
+        self.plane = self.gen_plane()
         for f in self.fs:
             self.changeplane(f)
         return self.plane
