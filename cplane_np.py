@@ -35,11 +35,12 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
 #             s = round(s,3)
 #             ys.append(s*1j)
         
-        for i in range(0,self.xlen):
-            p = []
-            for k in range(0,self.ylen):
-                p.append(xs[i]+ys[k])
-            self.plane.append(p)
+#         for i in range(0,self.xlen):
+#             p = []
+#             for k in range(0,self.ylen):
+#                 p.append(xs[i]+ys[k])
+#             self.plane.append(p)
+        self.plane = multi + vec_y
         print(self.plane)
         return self.plane
         
