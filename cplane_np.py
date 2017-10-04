@@ -47,8 +47,8 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
 #             self.plane.append(p)
         #together------------------------------------------------------------------------
         self.plane = multi + vec_y
-        print(self.plane)
-        return self.plane
+        print(self.plane.reshape(3,3).transpose())
+        return self.plane.reshape(3,3).transpose()
         
     def __init__(self,xmin,xmax,xlen,ymin,ymax,ylen):
         self.xmin  = float(xmin)
