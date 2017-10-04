@@ -20,6 +20,7 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
         #xs-----------------------------------------------------------------------------
         self.dx = (self.xmax-self.xmin)/(self.xlen-1)
         multi = np.array(list(range(0,self.xlen))*ylen)  #array with index + 1, ylen times
+#         print(multi*2)
         multi = multi * self.dx #multiply by dx to get how much to add
         multi = self.xmin + multi
 #         for i in range(0,self.xlen-1):
@@ -28,9 +29,11 @@ class ListComplexPlane(abscplane.AbsComplexPlane):
 #             xs.append(s)
         #ys-----------------------------------------------------------------------------
         self.dy = (self.ymax-self.ymin)/(self.ylen-1)
-        vec_y = np.array(range(0,self.ylen))
+        vec_y = np.array(list(range(0,self.ylen)))
         vec_y = np.repeat(vec_y,xlen)
-        vec_y =  (self.ymin*1j) + (vec_y*self.dy)
+#         print(vec_y)
+        vec_y =  (self.ymin*1j) *  (vec_y*self.dy)
+#         print(vec_y)
 #         s = self.ymin
 #         for i in range(0,self.ylen-1):
 #             s += self.dy #increment based on length of dy
