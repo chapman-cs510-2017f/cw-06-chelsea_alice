@@ -47,6 +47,7 @@ class ArrayComplexPlane(abscplane.AbsComplexPlane):
 #             self.plane.append(p)
         #together------------------------------------------------------------------------
         self.plane = multi + vec_y
+        self.plane = pd.Series(self.plane, index = list(i for  i  in  range(0,len(self.xlen))))###################################
         print(self.plane.reshape(3,3).transpose())
         return self.plane.reshape(3,3).transpose()
         
