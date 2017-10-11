@@ -1,8 +1,8 @@
 # CS510 CW 6
 
-**Author(s):** **CHANGEME**
+**Author(s):** **Alice Wong and Chelsea Parlett-Pelleriti**
 
-[![Build Status](https://travis-ci.org/chapman-cs510-2017f/cw-06-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-cs510-2017f/cw-06-YOURNAME)
+[![Build Status](https://travis-ci.org/chapman-cs510-2017f/cw-05-chelsea_alice.svg?branch=master)](https://travis-ci.org/chapman-cs510-2017f/cw-05-chelsea_alice)
 
 ## Specification
 
@@ -21,7 +21,7 @@
 
 Analyze in this section what you found useful about this assignment in your own words. Include any lingering questions or comments that you may have.
 
-**CHANGEME**
+**This was a very challenging assignment. Learning about how numpy can be used to speed up certain types  of functions and vectorize operations was useful. This makes python seem closer  to R in terms of efficiency. **
 
 ## Honor Pledge
 
@@ -32,4 +32,4 @@ I pledge that all the work in this repository is my own with only the following 
 
 Signed,
 
-**YOURNAME**
+**Chelsea Parlett-Pelleriti and Alice Wong**
